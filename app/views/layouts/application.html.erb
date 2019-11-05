@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Kpt</title>
+    <title>kpt</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://mtsgi.github.io/kitstrap/d/kitstrap.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <a class='header-logo' href="/">kpt</a>
+      <% if( account ) %>
+        <%= link_to('Logout', "/sessions/" + account.name, method: :delete, class: 'kit-right') %>
+      <% else %>
+        <%= link_to('Login', login_path, class: 'kit-right') %>
+      <% end %>
+    </header>
+    <% if(flash.notice) %>
+      <div class="notice"><%= flash.notice %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

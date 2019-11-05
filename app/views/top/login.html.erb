@@ -1,0 +1,19 @@
+<div id="content" data-turbolinks="false">
+    <h1>Login</h1>
+    <% if(!account) %>
+        <%= form_with( url: sessions_path, local: true ) do |f| %>
+            <div class='p'>
+                <%= f.label(:name, "Username", class: 'kit-block') %>
+                <%= f.text_field(:name, placeholder: "Username", class: 'textbox') %>
+            </div>
+            <div class='p'>
+                <%= f.label(:password, "Password", class: 'kit-block') %>
+                <%= f.password_field(:password, placeholder: "Password", class: 'textbox') %>
+            </div>
+            <%= f.submit("Log in", class: 'kit-button-alt -small m') %>
+        <% end %>
+    <% else %>
+        You are already logged in.<br>
+        <%= link_to('Logout', "/sessions/" + account.name, method: :delete, class: 'kit-hyperlink') %>
+    <% end %>
+</div>
