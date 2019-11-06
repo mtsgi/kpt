@@ -12,6 +12,7 @@
             </div>
             <%= f.submit("Log in", class: 'kit-button-alt -small m') %>
         <% end %>
+        <p>or: <%= link_to "User registration", new_user_path, class: 'kit-hyperlink' %></p>
     <% else %>
         You are already logged in.<br>
         <%= link_to('Logout', "/sessions/" + account.name, method: :delete, class: 'kit-hyperlink') %>

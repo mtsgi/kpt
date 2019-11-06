@@ -1,0 +1,13 @@
+<div id="content">
+    <h1>All apps on kpt</h1>
+    <p>There is <%= @apps.length %> apps on kpt.</p>
+    <kit-container>
+        <% @apps.each do |app| %>
+            <div class="kit-pane kit-box hover p-s">
+                <%= link_to(app.appid,'/' + app.appid, class: 'kit-hyperlink') %>
+                <span>- <%= app.name %></span>
+                <span class="kit-sub kit-right"><%= app.user.name %></span>
+            </div>
+        <% end %>
+    </kit-container>
+</div>

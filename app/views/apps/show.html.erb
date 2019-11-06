@@ -1,0 +1,29 @@
+<% @page_type = "app" %>
+
+<div id="content">
+    <% if @app %>
+        <h1>
+            <%= @app.appid %>
+            <span class="kit-sub">by <%= link_to(@app.user.name, user_path(@app.user.name), class: "kit-hl-alt") %></span>
+        </h1>
+        
+        <div class="kit-container p-s">
+            <%= @app.name %>
+        </div>
+
+        <kit-space class="m"></kit-space>
+
+        <h3>Install by kpt command:</h3>
+
+        <code class="kit-block p">kpt install <%= @app.appid %></code>
+
+        <p><%= @app.desc %></p>
+        
+        <%= link_to "Edit this app", edit_app_path(@app.appid), class: 'kit-button-alt kit-right' if account&.id == @app.user.id %>
+    <% else %>
+        <h1>Something went wrong...</h1>
+        <div>
+            <strong><%= params[:appid] %></strong> is not found.
+        </div>
+    <% end %>
+</div>

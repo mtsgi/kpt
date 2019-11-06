@@ -1,0 +1,26 @@
+<div id="content">
+    <h1>Edit "<%= @app.appid %>"</h1>
+    <% if( params[:errors].present? ) %>
+        <% params[:errors].each do |error| %>
+            <div class="error"><%= error %></div>
+        <% end %>
+    <% end %>
+    <%= form_with( model: @app, local: true ) do |f| %>
+        <div class='p'>
+            <%= f.label(:name, 'App Name', class: 'kit-block') %>
+            <%= f.text_field(:name, placeholder: 'App Name', class: 'textbox') %>
+        </div>
+
+        <div class='p'>
+            <%= f.label(:appid, 'App ID', class: 'kit-block') %>
+            <%= f.text_field(:appid, placeholder: 'App ID', class: 'textbox') %>
+        </div>
+
+        <div class='p'>
+            <%= f.label(:desc, 'Description', class: 'kit-block') %>
+            <%= f.text_area(:desc, placeholder: 'Description', class: 'textbox') %>
+        </div>
+
+        <%= f.submit(class: 'kit-button-alt -small m') %>
+    <% end %>
+</div>
