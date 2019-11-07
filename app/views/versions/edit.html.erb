@@ -4,21 +4,23 @@
         <span class="kit-sub">by <%= link_to(@app.user.name, user_path(@app.user.name), class: "kit-hl-alt") %></span>
     </h1>
     <p><%= link_to('Back to '+@app.name, '/'+@app.appid, class: "kit-hyperlink") %></p>
-    <h1>Edit app info</h1>
-    <% if( params[:errors].present? ) %>
-        <% params[:errors].each do |error| %>
-            <div class="error"><%= error %></div>
+    <h1>Edit <%= @version.name %></h1>
+    <p>Add a version to <%= @app.name %></p>
+    <% if( @app.errors.present? ) %>
+        <% @app.errors.messages.each do |message| %>
+            <% message[1].each do |m| %>
+                <div class="error"><%= m %></div>
+            <% end %>
         <% end %>
     <% end %>
-    <%= form_with( model: @app, local: true ) do |f| %>
+    <%= form_with( model: @version, local: true ) do |f| %>
         <div class='p'>
-            <%= f.label(:name, 'App Name', class: 'kit-block') %>
-            <%= f.text_field(:name, placeholder: 'App Name', class: 'textbox') %>
+            <%= f.label(:name, 'Version Name', class: 'kit-block') %>
+            <%= f.text_field(:name, placeholder: 'Version Name', class: 'textbox') %>
         </div>
-
         <div class='p'>
-            <%= f.label(:appid, 'App ID', class: 'kit-block') %>
-            <%= f.text_field(:appid, placeholder: 'App ID', class: 'textbox') %>
+            <%= f.label(:path, 'Path', class: 'kit-block') %>
+            <%= f.text_field(:path, placeholder: 'Path', class: 'textbox') %>
         </div>
 
         <div class='p'>

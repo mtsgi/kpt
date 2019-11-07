@@ -1,0 +1,33 @@
+<div id="content">
+    <h1>
+        <%= @app.appid %>
+        <span class="kit-sub">by <%= link_to(@app.user.name, user_path(@app.user.name), class: "kit-hl-alt") %></span>
+    </h1>
+    <p><%= link_to('Back to '+@app.name, '/'+@app.appid, class: "kit-hyperlink") %></p>
+    <h1>Add New Version to the App</h1>
+    <p>Add a version to <%= @app.name %></p>
+    <% if( @app.errors.present? ) %>
+        <% @app.errors.messages.each do |message| %>
+            <% message[1].each do |m| %>
+                <div class="error"><%= m %></div>
+            <% end %>
+        <% end %>
+    <% end %>
+    <%= form_with( url: app_versions_path(@app.appid), method: :post, local: true ) do |f| %>
+        <div class='p'>
+            <%= f.label(:name, 'Version Name', class: 'kit-block') %>
+            <%= f.text_field(:name, placeholder: 'Version Name', class: 'textbox') %>
+        </div>
+        <div class='p'>
+            <%= f.label(:path, 'Path', class: 'kit-block') %>
+            <%= f.text_field(:path, placeholder: 'Path', class: 'textbox') %>
+        </div>
+
+        <div class='p'>
+            <%= f.label(:desc, 'Description', class: 'kit-block') %>
+            <%= f.text_area(:desc, placeholder: 'Description', class: 'textbox') %>
+        </div>
+
+        <%= f.submit(class: 'kit-button-alt -small m') %>
+    <% end %>
+</div>

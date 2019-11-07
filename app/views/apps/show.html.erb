@@ -1,4 +1,5 @@
 <% @page_type = "app" %>
+<% @page_title = @app.appid %>
 
 <div id="content">
     <% if @app %>
@@ -17,11 +18,59 @@
 
         <code class="kit-block p">kpt install <%= @app.appid %></code>
 
-        <p><%= @app.desc %></p>
+        <h3>Description</h3>
+
+        <p>
+            <blockquote class='m-0'><%= @app.desc %></blockquote>
+        </p>
         
-        <%= link_to "Edit this app", edit_app_path(@app.appid), class: 'kit-button-alt kit-right' if account&.id == @app.user.id %>
+
+        <h3>
+            Versions
+            <% if @versions.present? %>
+                <span class="kit-badge -limegreen"><%= @versions.length %></span>
+            <% end %>
+        </h3>
+
+        <% if @versions.present? %>
+            <p>Latest version is <strong><%= @versions.last.name %></strong>.</p>
+        <% end %>
+
+        <kit-container>
+            <% if @versions.length > 0 %>
+                <% @versions.each do |version| %>
+                    <div class="kit-box">
+                        <%= link_to( version.path, class: "kit-hl-alt" ) do %>
+                            <div>
+                                <strong><%= version.name %></strong>
+                                <span class="kit-sub"><%= version.public_uid %></span>
+                                <div class="kit-sub"><%= version.created_at %></div>
+                            </div>
+                            <div class="kit-sub"><%= version.desc %></div>
+                        <% end %>
+                        <code class="kit-block m">kpt install <%= @app.appid %> <%= version.name %></code>
+                        <div class="kit-text-r">
+                            <%= link_to "Edit", edit_app_version_path(@app.appid, version.public_uid) , class: 'kit-hyperlink' if account&.id == @app.user.id %>
+                            <%= link_to "Delete", nil , class: 'kit-hyperlink' if account&.id == @app.user.id %>
+                        </div>
+                    </div>
+                <% end %>
+            <% else %>
+                <div class="kit-box">There is no versions.</div>
+            <% end %>
+        </kit-container>
+
+        <p>
+            <%= link_to "Add version to this app", new_app_version_path(@app.appid) , class: 'kit-button-alt -limegreen' if account&.id == @app.user.id %>
+        </p>
+        
+        <p class="kit-text-r">
+            <%= link_to "Edit this app", edit_app_path(@app.appid), class: 'kit-button-alt' if account&.id == @app.user.id %>
+            <%= link_to "Delete this app", app_path(@app.appid), method: :delete, class: 'kit-button-alt -crimson' if account&.id == @app.user.id %>
+        </p>
+
     <% else %>
-        <h1>Something went wrong...</h1>
+        <h1>Something went warong...</h1>
         <div>
             <strong><%= params[:appid] %></strong> is not found.
         </div>

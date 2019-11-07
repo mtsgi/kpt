@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_05_175955) do
+ActiveRecord::Schema.define(version: 2019_11_06_055929) do
 
   create_table "apps", force: :cascade do |t|
     t.integer "user_id"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 2019_11_05_175955) do
     t.string "profile"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "versions", force: :cascade do |t|
+    t.string "name"
+    t.string "desc"
+    t.string "path"
+    t.string "public_uid"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "app_id"
   end
 
 end
