@@ -1,5 +1,5 @@
 <div id="content">
-    <h1>User registration</h1>
+    <h1>Edit profile</h1>
     <% if( @user.errors.present? ) %>
         <% @user.errors.messages.each do |message| %>
             <% message[1].each do |m| %>
@@ -9,24 +9,21 @@
     <% end %>
     <%= form_with( model: @user, local: true ) do |f| %>
         <div class='p'>
+            <%= f.label(:profile, 'Profile', class: 'kit-block') %>
+            <%= f.text_area(:profile, placeholder: 'Profile', class: 'textbox') %>
+        </div>
+
+        <div class='p'>
             <%= f.label(:name, 'Username', class: 'kit-block') %>
             <%= f.text_field(:name, placeholder: 'Username', class: 'textbox') %>
         </div>
-        <div class='p'>
-            <%= f.label(:email, 'Email', class: 'kit-block') %>
-            <%= f.text_field(:email, placeholder: 'Email', class: 'textbox') %>
-        </div>
+        <blockquote>[Danger] This operation will change directories of your all apps on kpt.</blockquote>
 
         <div class='p'>
             <%= f.label(:password, 'Password', class: 'kit-block') %>
             <%= f.password_field(:password, placeholder: 'Password', class: 'textbox') %>
             <kit-space></kit-space>
             <%= f.password_field(:password_confirmation, placeholder: 'Confirmation', class: 'textbox') %>
-        </div>
-
-        <div class='p'>
-            <%= f.label(:profile, 'Profile', class: 'kit-block') %>
-            <%= f.text_area(:profile, placeholder: 'Profile', class: 'textbox') %>
         </div>
 
         <%= f.submit(class: 'kit-button-alt -small m') %>

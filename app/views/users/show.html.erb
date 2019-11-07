@@ -1,0 +1,26 @@
+<% @page_type = "user" %>
+
+<div id="content">
+    <% if @user %>
+        <%= link_to "Edit my profile", edit_user_path(account.name), class: 'kit-button-alt -dodgerblue kit-right' if account&.id == @user.id %>
+        <h1><%= @user.name %></h1>
+        <div class="kit-container p-s">
+            <%= @user.profile %>
+        </div>
+        <h3>Published Apps</h3>
+        <ul>
+            <% @user.apps.each do |app| %>
+                <li><%= link_to app.appid, '/' + app.appid, class: 'kit-hyperlink' %></li>
+            <% end %>
+            <% if @user.apps.length == 0 %>
+                <li>Nothing to show.</li>
+            <% end %>
+        </ul>
+        <%= link_to "Register new app", new_app_path, class: 'kit-button-alt -limegreen' if account&.id == @user.id %>
+    <% else %>
+        <h1>Something went wrong...</h1>
+        <div>
+            <strong><%= params[:user_name] %></strong> is not found.
+        </div>
+    <% end %>
+</div>
