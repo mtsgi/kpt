@@ -21,7 +21,7 @@
         <h3>Description</h3>
 
         <p>
-            <blockquote class='m-0'><%= @app.desc %></blockquote>
+            <%= @app.desc %>
         </p>
         
 
@@ -40,15 +40,16 @@
             <% if @versions.length > 0 %>
                 <% @versions.each do |version| %>
                     <div class="kit-box">
-                        <%= link_to( version.path, class: "kit-hl-alt" ) do %>
+                            <%= link_to( 'define.json', version.path + 'define.json', class: "kit-hyperlink kit-right" ) %>
                             <div>
                                 <strong><%= version.name %></strong>
                                 <span class="kit-sub"><%= version.public_uid %></span>
                                 <div class="kit-sub"><%= version.created_at %></div>
                             </div>
                             <div class="kit-sub"><%= version.desc %></div>
-                        <% end %>
-                        <code class="kit-block m">kpt install <%= @app.appid %> <%= version.name %></code>
+                        <code class="kit-block m">
+                            kpt install <%= @app.appid %> <%= version.name %>
+                        </code>
                         <div class="kit-text-r">
                             <%= link_to "Edit", edit_app_version_path(@app.appid, version.public_uid) , class: 'kit-hyperlink' if account&.id == @app.user.id %>
                             <%= link_to "Delete", nil , class: 'kit-hyperlink' if account&.id == @app.user.id %>

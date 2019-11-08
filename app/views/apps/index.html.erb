@@ -6,7 +6,7 @@
             <div class="kit-pane kit-box hover p-s">
                 <%= link_to(app.appid,'/' + app.appid, class: 'kit-hyperlink') %>
                 <span>- <%= app.name %></span>
-                <span class="kit-sub kit-right"><%= app.user.name %></span>
+                <%= link_to( app.user.name, user_path(app.user.name), class: 'kit-sub kit-right kit-hl-alt') %>
             </div>
         <% end %>
     </kit-container>

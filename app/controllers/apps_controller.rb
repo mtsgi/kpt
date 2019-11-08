@@ -15,7 +15,7 @@ class AppsController < ApplicationController
         params[:app][:user_id] = account.id
         @app = App.new(params[:app].permit(:name, :appid, :user_id, :desc))
         if( @app.save )
-            redirect_to('/' + @app.apppid , notice: 'App registration is completed.')
+            redirect_to('/' + @app.appid , notice: 'App registration is completed.')
         else
             redirect_back(fallback_location: root_path)
         end
