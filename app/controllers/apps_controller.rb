@@ -15,7 +15,7 @@ class AppsController < ApplicationController
         params[:app][:user_id] = account.id
         @app = App.new(params[:app].permit(:name, :appid, :user_id, :desc))
         if( @app.save )
-            redirect_to('/' + @app.apppid , notice: 'App registration is completed.')
+            redirect_to('/' + @app.appid , notice: 'App registration is completed.')
         else
             redirect_back(fallback_location: root_path)
         end
@@ -23,6 +23,7 @@ class AppsController < ApplicationController
 
     def show
         @app = App.find_by(appid: params[:appid])
+        @versions = @app.versions
     end
 
     def edit
@@ -36,7 +37,7 @@ class AppsController < ApplicationController
         @app = App.find_by(id: params[:appid])
         if @app && account&.name == @app.user.name && @app.update(params[:app].permit(:appid, :name, :desc))
             flash.notice = "App has been updated."
-            redirect_to app_path(@app.appid)
+            redirect_to '/' + @app.appid
         else
             flash.notice = "Failed to update an app."
             redirect_to root_path

@@ -6,7 +6,12 @@ module Api
       end
 
       def show
-        @user = User.find_by( nfcid: params[:id] )
+        @user = User.find_by( name: params[:id] )
+        if @user
+          render json: { status: 'SUCCESS', data: @user, apps: @user.apps }
+        else
+          render json: { status: 'FAILED', error: "kpt: The user '#{params[:id]}' was not found." }
+        end
       end
     end
   end

@@ -12,7 +12,7 @@ class UsersController < ApplicationController
         @user = User.new(params[:user].permit(:name, :email, :password, :password_confirmation, :profile))
         if( @user.save )
             session[:user_id] = @user.id
-            redirect_to(users_path(@user.name) , notice: 'User registration is completed.')
+            redirect_to(user_path(@user.name) , notice: 'User registration is completed.')
         else
             redirect_back(fallback_location: root_path)
         end
