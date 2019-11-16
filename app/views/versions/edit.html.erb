@@ -5,7 +5,7 @@
     </h1>
     <p><%= link_to('Back to '+@app.name, '/'+@app.appid, class: "kit-hyperlink") %></p>
     <h1>Edit <%= @version.name %></h1>
-    <p>Add a version to <%= @app.name %></p>
+    <p>Edit a version of <%= @app.name %></p>
     <% if( @app.errors.present? ) %>
         <% @app.errors.messages.each do |message| %>
             <% message[1].each do |m| %>

@@ -17,13 +17,13 @@ class AppsController < ApplicationController
         if( @app.save )
             redirect_to('/' + @app.appid , notice: 'App registration is completed.')
         else
-            redirect_back(fallback_location: root_path)
+            render('new')
         end
     end
 
     def show
         @app = App.find_by(appid: params[:appid])
-        @versions = @app.versions
+        @versions = @app.versions.order(created_at: 'DESC')
     end
 
     def edit
