@@ -12,8 +12,9 @@ class SessionsController < ApplicationController
     end
 
     def destroy
+        @name = account.name
         session.delete(:user_id)
-        flash.notice = 'Logged out.'
+        flash.notice = "Logged out from #{@name}."
         redirect_to(:root)
     end
 end

@@ -41,8 +41,16 @@ header a:hover {
     text-decoration: underline;
 }
 
+header a img{
+    vertical-align: bottom;
+    height: 20px;
+    opacity: .6;
+}
+
 h1 {
-    font-size: 24px;
+    font-size: 28px;
+    border: none;
+    margin: 10px 0;
 }
 
 #content {

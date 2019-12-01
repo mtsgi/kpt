@@ -15,10 +15,10 @@
       <a class='header-logo' href="/">kpt</a>
       <%= @page_type %>
       <% if( account ) %>
-        <%= link_to('Logout', "/sessions/" + account.name, method: :delete, class: 'kit-right') %>
-        <%= link_to('My Page', user_path(account.name), class: 'kit-right') %>
+        <%= link_to(image_tag('/exit.png'), '/sessions/' + account.name, method: :delete, class: 'kit-right') %>
+        <%= link_to(image_tag('/account_box.png'), user_path(account.name), class: 'kit-right') %>
       <% else %>
-        <%= link_to('Login', login_path, class: 'kit-right') %>
+        <%= link_to(image_tag('/account_circle.png'), login_path, class: 'kit-right') %>
       <% end %>
     </header>
     <% if(flash.notice) %>

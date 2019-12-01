@@ -1,4 +1,4 @@
-/* kitstrap v0.3 */
+/* kitstrap v0.4 */
 
 :root {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -97,16 +97,6 @@ kit-navbar-alt .kit-navitem:hover,
     text-decoration: underline;
 }
 
-#kit-wallpaper {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    height: 100%;
-    width: 100%;
-    background: url("");
-    background-size: cover;
-}
-
 .kit-d-icon {
     border-radius: 5px;
     padding: 4px;
@@ -137,7 +127,6 @@ kit-navbar-alt .kit-navitem:hover,
 .kit-toggle {
     display: block;
     padding: 8px;
-    border-bottom: 1px solid #a0a0a0;
 }
 
 .kit-toggle:hover {
@@ -230,13 +219,16 @@ kit-btn:active,
 .textbox {
     cursor: text;
     outline: none;
-    border: 1px solid #000000;
+    border: 1px solid #3d3d3d;
+    color: #3d3d3d;
     font-size: 16px;
     padding: 4px;
     background: #ffffff;
     box-shadow: inset 1px 1px 3px 0px rgba(0, 0, 0, .2);
     border-radius: 5px;
     font-family: 'Noto Sans JP', sans-serif;
+    width: auto;
+    box-sizing: border-box;
 }
 
 .textbox:focus {
@@ -259,7 +251,20 @@ kit-btn:active,
     color: white;
 }
 
+.textbox.-small {
+    width: 150px;
+}
+
+.textbox.-medium {
+    width: 300px;
+}
+
+.textbox.-large {
+    width: 450px;
+}
+
 kit-hl,
+.kit-hl,
 .kit-hyperlink {
     color: dodgerblue;
     text-decoration: underline;
@@ -289,6 +294,7 @@ kit-button,
     cursor: default;
     border: none;
     border-radius: 4px;
+    outline: none;
     line-height: 200%;
     background: dodgerblue;
     color: #ffffff;
@@ -367,6 +373,7 @@ kit-button-alt,
     display: inline-block;
     cursor: default;
     border-radius: 5px;
+    outline: none;
     line-height: 200%;
     background: white;
     color: dodgerblue;
@@ -586,6 +593,8 @@ kit-buttongroup,
 kit-formgroup,
 .kit-formgroup {
     display: flex;
+    justify-content: flex-start;
+    max-width: 100%;
 }
 
 kit-buttongroup kit-button,
@@ -831,6 +840,37 @@ kit-badge.-black,
     background: #353535;
 }
 
+kit-notice,
+.kit-notice {
+    display: block;
+    background: #e0e0ff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    margin: 10px;
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .1);
+}
+
+kit-notice.-green,
+.kit-notice.-green {
+    background: #c0ffc0;
+}
+
+kit-notice.-yellow,
+.kit-notice.-yellow {
+    background: #ffffc0;
+}
+
+kit-notice.-red,
+.kit-notice.-red {
+    background: #ffc0c0;
+}
+
+kit-notice.-black,
+.kit-notice.-black {
+    background: #3d3d3d;
+    color: #f0f0f0;
+}
+
 kit-flash,
 .kit-flash{
     position: fixed;
@@ -844,17 +884,42 @@ kit-flash,
     border-radius: 0 0 10px 10px;
 }
 
-h2 {
-    margin: 10px 0;
-    padding: 2px;
-    font-weight: 900;
+/* default elements */
+
+h1 {
+    font-size: 32px;
+    margin: 20px 0;
+    padding: 10px 0;
+    font-weight: 700;
     border-bottom: 1px solid #c0c0c0;
+}
+
+h2 {
+    font-size: 24px;
+    margin: 10px 0;
+    padding: 5px 0;
+    font-weight: 700;
+    border-bottom: 1px solid #c0c0c0;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 5px 0;
+    margin: 8px 0
+}
+
+h4 {
+    font-size: 17px;
+    font-weight: 700;
+    padding: 3px 0;
+    margin: 5px 0
 }
 
 h5 {
     font-size: 15px;
-    color: #909090;
-    margin: 4px 0;
+    color: #505050;
+    margin: 5px 0;
 }
 
 pre {
@@ -883,6 +948,10 @@ blockquote {
     padding: 10px;
     background: #f0f0f0;
     border-left: 3px solid #1f83e7;
+}
+
+input, textarea {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 /* layout */
@@ -957,13 +1026,15 @@ kit-pane,
     display: block;
     padding: 6px;
     background: #ffffff;
-    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .2);
+    border: 1px solid transparent;
 }
 
 kit-pane.dark,
 .kit-pane.dark {
     background: #303030;
     color: #f0f0f0;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .4);
 }
 
 kit-pane.hover:hover,
@@ -973,7 +1044,7 @@ kit-pane.hover:hover,
 
 kit-pane.dark.hover:hover,
 .kit-pane.dark.hover:hover {
-    background: #4a4a4a;
+    background: #404040;
 }
 
 /* padding and margin */
@@ -985,12 +1056,68 @@ kit-pane.dark.hover:hover,
 .p-xl{ padding: 24px }
 .p-0{ padding: 0 }
 
+.p-t{ padding-top: 8px }
+.p-t-s{ padding-top: 4px }
+.p-t-m{ padding-top: 10px }
+.p-t-l{ padding-top: 16px }
+.p-t-xl{ padding-top: 24px }
+.p-t-0{ padding-top: 0 }
+
+.p-b{ padding-bottom: 8px }
+.p-b-s{ padding-bottom: 4px }
+.p-b-m{ padding-bottom: 10px }
+.p-b-l{ padding-bottom: 16px }
+.p-b-xl{ padding-bottom: 24px }
+.p-b-0{ padding-bottom: 0 }
+
+.p-left{ padding-left: 8px }
+.p-l-s{ padding-left: 4px }
+.p-l-m{ padding-left: 10px }
+.p-l-l{ padding-left: 16px }
+.p-l-xl{ padding-left: 24px }
+.p-l-0{ padding-left: 0 }
+
+.p-r{ padding-right: 8px }
+.p-r-s{ padding-right: 4px }
+.p-r-m{ padding-right: 10px }
+.p-r-l{ padding-right: 16px }
+.p-r-xl{ padding-right: 24px }
+.p-r-0{ padding-right: 0 }
+
 .m{ margin: 8px }
 .m-s{ margin: 4px }
 .m-m{ margin: 10px }
 .m-l{ margin: 16px }
 .m-xl{ margin: 24px }
 .m-0{ margin: 0 }
+
+.m-t{ margin-top: 8px }
+.m-t-s{ margin-top: 4px }
+.m-t-m{ margin-top: 10px }
+.m-t-l{ margin-top: 16px }
+.m-t-xl{ margin-top: 24px }
+.m-t-0{ margin-top: 0 }
+
+.m-b{ margin-bottom: 8px }
+.m-b-s{ margin-bottom: 4px }
+.m-b-m{ margin-bottom: 10px }
+.m-b-l{ margin-bottom: 16px }
+.m-b-xl{ margin-bottom: 24px }
+.m-b-0{ margin-bottom: 0 }
+
+.m-left{ margin-left: 8px }
+.m-l-s{ margin-left: 4px }
+.m-l-m{ margin-left: 10px }
+.m-l-l{ margin-left: 16px }
+.m-l-xl{ margin-left: 24px }
+.m-l-0{ margin-left: 0 }
+
+.m-r{ margin-right: 8px }
+.m-r-s{ margin-right: 4px }
+.m-r-m{ margin-right: 10px }
+.m-r-l{ margin-right: 16px }
+.m-r-xl{ margin-right: 24px }
+.m-r-0{ margin-right: 0 }
 
 /* fonts */
 
@@ -1072,9 +1199,65 @@ kit-pane.dark.hover:hover,
     line-height: 1;
 }
 
+.kit-text-underline {
+    text-decoration: underline;
+}
+
+.kit-text-overline {
+    text-decoration: overline;
+}
+
+.kit-text-wavy {
+    text-decoration: wavy;
+}
+
+.kit-text-double {
+    text-decoration: double;
+}
+
+.kit-text-nodecoration {
+    text-decoration: none;
+}
+
+/* width and height */
+
+.kit-width-auto {
+    width: auto;
+}
+
+.kit-width-25 {
+    width: 25%;
+}
+
+.kit-width-50 {
+    width: 50%;
+}
+
+.kit-width-75 {
+    width: 75%;
+}
+
+.kit-width-100 {
+    width: 100%;
+}
+
+.kit-fit {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.kit-height-auto {
+    height: auto;
+}
+
+.kit-height-100 {
+    height: 100%;
+}
+
 /* colors */
 
-.orange {
+.orange,
+.kit-bgcolor-orange {
     background: #ffa500;
 }
 
@@ -1091,7 +1274,8 @@ kit-button-alt.orange:hover {
     background: #ffa500;
 }
 
-.dodgerblue {
+.dodgerblue,
+.kit-bgcolor-dodgerblue {
     background: #1e90ff;
 }
 
@@ -1108,7 +1292,8 @@ kit-button-alt.dodgerblue:hover {
     background: #1e90ff;
 }
 
-.deeppink {
+.deeppink,
+.kit-bgcolor-deeppink {
     background: #ff1493;
 }
 
@@ -1125,7 +1310,8 @@ kit-button-alt.deeppink:hover {
     background: #ff1493;
 }
 
-.limegreen {
+.limegreen,
+.kit-bgcolor-limegreen {
     background: #32cd32;
 }
 
@@ -1142,7 +1328,8 @@ kit-button-alt.limegreen:hover {
     background: #32cd32;
 }
 
-.crimson {
+.crimson,
+.kit-bgcolor-crimson {
     background: #dc143c;
 }
 
@@ -1159,7 +1346,8 @@ kit-button-alt.crimson:hover {
     background: #dc143c;
 }
 
-.green {
+.green,
+.kit-bgcolor-green {
     background: #008000;
 }
 
@@ -1176,7 +1364,8 @@ kit-button-alt.green:hover {
     background: #008000;
 }
 
-.silver {
+.silver,
+.kit-bgcolor-silver {
     color: #303030;
     text-shadow: none;
     background: #ebebeb;
@@ -1195,7 +1384,8 @@ kit-button-alt.silver:hover {
     background: #ebebeb;
 }
 
-.black {
+.black,
+.kit-bgcolor-black {
     background: #353535;
 }
 
@@ -1279,8 +1469,8 @@ kit-button-alt.black:hover {
     align-items: flex-end;
 }
 
-.kit-order-1 {
-    order: 1;
+.kit-flex-order-1 {
+    order: -1;
 }
 
 /* other function */
@@ -1289,6 +1479,15 @@ kit-button-alt.black:hover {
     overflow: scroll;
     scrollbar-color: light;
     scrollbar-width: thin;
+}
+
+.kit-hidden {
+    visibility: hidden;
+}
+
+.kit-nodisp,
+.kit-nd {
+    display: none;
 }
 
 .kit-noevents {
