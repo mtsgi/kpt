@@ -1,16 +1,16 @@
 <div id="content" data-turbolinks="false">
     <h1>Login</h1>
     <% if(!account) %>
-        <%= form_with( url: sessions_path, local: true ) do |f| %>
-            <div class='p'>
+        <%= form_with(url: sessions_path, local: true, autocomplete: "off") do |f| %>
+            <div class='m-l'>
                 <%= f.label(:name, "Username", class: 'kit-block') %>
-                <%= f.text_field(:name, placeholder: "Username", class: 'textbox') %>
+                <%= f.text_field(:name, placeholder: "Username", class: 'textbox kit-width-100') %>
             </div>
-            <div class='p'>
+            <div class='m-l'>
                 <%= f.label(:password, "Password", class: 'kit-block') %>
-                <%= f.password_field(:password, placeholder: "Password", class: 'textbox') %>
+                <%= f.password_field(:password, placeholder: "Password", class: 'textbox kit-width-100') %>
             </div>
-            <%= f.submit("Log in", class: 'kit-button-alt -small m') %>
+            <%= f.submit("Log in", class: 'kit-button-alt -medium m-l') %>
         <% end %>
         <p>or: <%= link_to "User registration", new_user_path, class: 'kit-hyperlink' %></p>
     <% else %>

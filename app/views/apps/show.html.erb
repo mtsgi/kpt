@@ -8,8 +8,8 @@
             <span class="kit-sub">by <%= link_to(@app.user.name, user_path(@app.user.name), class: "kit-hl-alt") %></span>
         </h1>
         
-        <div class="kit-container p-s">
-            <%= @app.name %>
+        <div class="kit-pane kit-sub">
+            <%= @app.name %> - Version: <%= @versions.first&.name %>
         </div>
 
         <kit-space class="m"></kit-space>
@@ -20,9 +20,9 @@
 
         <h3>Description</h3>
 
-        <p>
+        <article>
             <%= @app.desc %>
-        </p>
+        </article>
         
 
         <h3>
@@ -33,14 +33,14 @@
         </h3>
 
         <% if @versions.present? %>
-            <p>Latest version is <strong><%= @versions.last.name %></strong>.</p>
+            <p>Latest version is <strong><%= @versions.first.name %></strong>.</p>
         <% end %>
 
         <kit-container>
             <% if @versions.length > 0 %>
                 <% @versions.each do |version| %>
                     <div class="kit-box">
-                            <%= link_to( 'define.json', version.path + 'define.json', class: "kit-hyperlink kit-right" ) %>
+                            <%= link_to( 'View define.json', version.path + 'define.json', class: "kit-hyperlink kit-right kit-font-s" ) %>
                             <div>
                                 <strong><%= version.name %></strong>
                                 <span class="kit-sub"><%= version.public_uid %></span>
@@ -62,7 +62,7 @@
         </kit-container>
 
         <p>
-            <%= link_to "Add version to this app", new_app_version_path(@app.appid) , class: 'kit-button-alt -limegreen' if account&.id == @app.user.id %>
+            <%= link_to "Add version to this app", new_app_version_path(@app.appid) , class: 'kit-button-alt -limegreen kit-block kit-text-c m-l' if account&.id == @app.user.id %>
         </p>
         
         <p class="kit-text-r">

@@ -1,5 +1,5 @@
 <% @page_type = "user" %>
-<% @page_title = @user.name %>
+<% @page_title = @user&.name %>
 
 <div id="content">
     <% if @user %>
@@ -9,19 +9,23 @@
             <%= @user.profile %>
         </div>
         <h3>Published Apps</h3>
-        <ul>
+        <kit-container>
             <% @user.apps.each do |app| %>
-                <li><%= link_to app.appid, '/' + app.appid, class: 'kit-hyperlink' %></li>
+                <div class="kit-pane kit-box hover p-s">
+                    <%= link_to(app.appid,'/' + app.appid, class: 'kit-hyperlink') %>
+                    <span>- <%= app.name %></span>
+                    <%= link_to( app.user.name, user_path(app.user.name), class: 'kit-sub kit-right kit-hl-alt') %>
+                </div>
             <% end %>
-            <% if @user.apps.length == 0 %>
-                <li>Nothing to show.</li>
-            <% end %>
-        </ul>
-        <%= link_to "Register new app", new_app_path, class: 'kit-button-alt -limegreen' if account&.id == @user.id %>
+        </kit-container>
+        <%= link_to "Register new app", new_app_path, class: 'kit-button-alt -limegreen kit-block kit-text-c m-l' if account&.id == @user.id %>
+        <% if @user.apps.length == 0 %>
+            <i>Nothing to show.</i>
+        <% end %>
     <% else %>
         <h1>Something went wrong...</h1>
         <div>
-            <strong><%= params[:user_name] %></strong> is not found.
+            <strong><%= params[:user_name] || 'The user' %></strong> is not found.
         </div>
     <% end %>
 </div>
