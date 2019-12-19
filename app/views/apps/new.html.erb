@@ -6,21 +6,22 @@
         <% end %>
     <% end %>
     <%= form_with( model: @app, local: true ) do |f| %>
-        <div class='p'>
-            <%= f.label(:name, 'App Name', class: 'kit-block') %>
-            <%= f.text_field(:name, placeholder: 'App Name', class: 'textbox kit-width-100 kit-font-l p') %>
-        </div>
 
         <div class='p'>
             <%= f.label(:appid, 'App ID', class: 'kit-block') %>
-            <%= f.text_field(:appid, placeholder: 'App ID', class: 'textbox kit-width-100') %>
+            <div class="kit-sub">Can't be duplicated.</div>
+            <%= f.text_field(:appid, placeholder: 'App ID', class: 'textbox kit-width-100 kit-font-l p m-t') %>
         </div>
 
         <div class='p'>
+            <%= f.label(:name, 'App Name', class: 'kit-block') %>
+            <%= f.text_field(:name, placeholder: 'App Name', class: 'textbox kit-width-100 m-t') %>
+        </div>
+        <div class='p'>
             <%= f.label(:desc, 'Description', class: 'kit-block') %>
-            <%= f.text_area(:desc, placeholder: 'Description', class: 'textbox kit-width-100') %>
+            <%= f.text_area(:desc, placeholder: 'Description', class: 'textbox kit-width-100 m-t') %>
         </div>
 
-        <%= f.submit(class: 'kit-button-alt -small m') %>
+        <%= f.submit(class: 'kit-button-alt -medium m-t-l') %>
     <% end %>
 </div>
