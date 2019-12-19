@@ -62,12 +62,12 @@
         </kit-container>
 
         <p>
-            <%= link_to "Add version to this app", new_app_version_path(@app.appid) , class: 'kit-button-alt -limegreen kit-block kit-text-c m-l' if account&.id == @app.user.id %>
+            <%= link_to "Add version to this app", new_app_version_path(@app.appid) , class: 'kit-button-alt -limegreen kit-block kit-text-c' if account&.id == @app.user.id %>
         </p>
         
         <p class="kit-text-r">
             <%= link_to "Edit this app", edit_app_path(@app.appid), class: 'kit-button-alt' if account&.id == @app.user.id %>
-            <%= link_to "Delete this app", app_path(@app.appid), method: :delete, class: 'kit-button-alt -crimson' if account&.id == @app.user.id %>
+            <%= link_to "Delete this app", @app, method: :delete, class: 'kit-button-alt -crimson', data: { confirm: 'Are you sure you want to delete the app?' } if account&.id == @app.user.id %>
         </p>
 
     <% else %>

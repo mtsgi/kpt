@@ -28,7 +28,7 @@ class AppsController < ApplicationController
 
     def edit
         @app = App.find_by(appid: params[:appid])
-        unless account&.name == @app.user.name
+        unless @app && account&.name == @app.user.name
             redirect_to(login_path , notice: 'You cannot edit this app.')
         end
     end
@@ -46,5 +46,13 @@ class AppsController < ApplicationController
 
     def index
         @apps = App.all
+    end
+
+    def destroy
+        @app = App.find_by(id: params[:appid])
+        if @app.destroy
+            flash.notice = "App was successfully deleted."
+            redirect_to root_path
+        end
     end
 end

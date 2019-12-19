@@ -1,34 +1,32 @@
 <div id="content">
     <h1>User registration</h1>
-    <% if( @user.errors.present? ) %>
-        <% @user.errors.messages.each do |message| %>
-            <% message[1].each do |m| %>
-                <div class="error"><%= m %></div>
-            <% end %>
+    <% if( flash[:errors] ) %>
+        <% flash[:errors].each do |message| %>
+            <div class="error m-t"><%= message %></div>
         <% end %>
     <% end %>
     <%= form_with( model: @user, local: true ) do |f| %>
-        <div class='p'>
+        <div class='m-t-l'>
             <%= f.label(:name, 'Username', class: 'kit-block') %>
-            <%= f.text_field(:name, placeholder: 'Username', class: 'textbox') %>
+            <%= f.text_field(:name, placeholder: 'Username', class: 'textbox kit-width-100') %>
         </div>
-        <div class='p'>
+        <div class='m-t-l'>
             <%= f.label(:email, 'Email', class: 'kit-block') %>
-            <%= f.text_field(:email, placeholder: 'Email', class: 'textbox') %>
+            <%= f.text_field(:email, placeholder: 'Email', class: 'textbox kit-width-100') %>
         </div>
 
-        <div class='p'>
+        <div class='m-t-l'>
             <%= f.label(:password, 'Password', class: 'kit-block') %>
-            <%= f.password_field(:password, placeholder: 'Password', class: 'textbox') %>
+            <%= f.password_field(:password, placeholder: 'Password', class: 'textbox kit-width-100') %>
             <kit-space></kit-space>
-            <%= f.password_field(:password_confirmation, placeholder: 'Confirmation', class: 'textbox') %>
+            <%= f.password_field(:password_confirmation, placeholder: 'Confirmation', class: 'textbox kit-width-100') %>
         </div>
 
-        <div class='p'>
+        <div class='m-t-l'>
             <%= f.label(:profile, 'Profile', class: 'kit-block') %>
-            <%= f.text_area(:profile, placeholder: 'Profile', class: 'textbox') %>
+            <%= f.text_area(:profile, placeholder: 'Profile', class: 'textbox kit-width-100') %>
         </div>
 
-        <%= f.submit(class: 'kit-button-alt -small m') %>
+        <%= f.submit(class: 'kit-button-alt -medium m-t-l') %>
     <% end %>
 </div>

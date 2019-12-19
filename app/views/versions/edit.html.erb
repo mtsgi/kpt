@@ -4,7 +4,7 @@
         <span class="kit-sub">by <%= link_to(@app.user.name, user_path(@app.user.name), class: "kit-hl-alt") %></span>
     </h1>
     <p><%= link_to('Back to '+@app.name, '/'+@app.appid, class: "kit-hyperlink") %></p>
-    <h1>Edit <%= @version.name %></h1>
+    <h3>Edit <%= @version.name %></h3>
     <p>Edit a version of <%= @app.name %></p>
     <% if( @app.errors.present? ) %>
         <% @app.errors.messages.each do |message| %>
@@ -16,16 +16,16 @@
     <%= form_with( model: @version, local: true ) do |f| %>
         <div class='p'>
             <%= f.label(:name, 'Version Name', class: 'kit-block') %>
-            <%= f.text_field(:name, placeholder: 'Version Name', class: 'textbox') %>
+            <%= f.text_field(:name, placeholder: 'Version Name', class: 'textbox kit-width-100') %>
         </div>
         <div class='p'>
             <%= f.label(:path, 'Path', class: 'kit-block') %>
-            <%= f.text_field(:path, placeholder: 'Path', class: 'textbox') %>
+            <%= f.text_field(:path, placeholder: 'Path', class: 'textbox kit-width-100') %>
         </div>
 
         <div class='p'>
             <%= f.label(:desc, 'Description', class: 'kit-block') %>
-            <%= f.text_area(:desc, placeholder: 'Description', class: 'textbox') %>
+            <%= f.text_area(:desc, placeholder: 'Description', class: 'textbox kit-width-100') %>
         </div>
 
         <%= f.submit(class: 'kit-button-alt -small m') %>

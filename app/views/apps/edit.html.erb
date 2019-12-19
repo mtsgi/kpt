@@ -4,28 +4,28 @@
         <span class="kit-sub">by <%= link_to(@app.user.name, user_path(@app.user.name), class: "kit-hl-alt") %></span>
     </h1>
     <p><%= link_to('Back to '+@app.name, '/'+@app.appid, class: "kit-hyperlink") %></p>
-    <h1>Edit app info</h1>
+    <h3>Edit app info</h3>
     <% if( params[:errors].present? ) %>
         <% params[:errors].each do |error| %>
             <div class="error"><%= error %></div>
         <% end %>
     <% end %>
     <%= form_with( model: @app, local: true ) do |f| %>
-        <div class='p'>
+        <div class='m-t'>
             <%= f.label(:name, 'App Name', class: 'kit-block') %>
-            <%= f.text_field(:name, placeholder: 'App Name', class: 'textbox') %>
+            <%= f.text_field(:name, placeholder: 'App Name', class: 'textbox kit-width-100') %>
         </div>
 
-        <div class='p'>
+        <div class='m-t'>
             <%= f.label(:appid, 'App ID', class: 'kit-block') %>
-            <%= f.text_field(:appid, placeholder: 'App ID', class: 'textbox') %>
+            <%= f.text_field(:appid, placeholder: 'App ID', class: 'textbox kit-width-100') %>
         </div>
 
-        <div class='p'>
+        <div class='m-t'>
             <%= f.label(:desc, 'Description', class: 'kit-block') %>
-            <%= f.text_area(:desc, placeholder: 'Description', class: 'textbox') %>
+            <%= f.text_area(:desc, placeholder: 'Description', class: 'textbox kit-width-100') %>
         </div>
 
-        <%= f.submit(class: 'kit-button-alt -small m') %>
+        <%= f.submit(class: 'kit-button-alt -medium m-t-l') %>
     <% end %>
 </div>

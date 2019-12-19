@@ -5,7 +5,7 @@
     <% if @user %>
         <%= link_to "Edit my profile", edit_user_path(account.name), class: 'kit-button-alt -dodgerblue kit-right' if account&.id == @user.id %>
         <h1><%= @user.name %></h1>
-        <div class="kit-container p-s">
+        <div class="kit-pane p-s">
             <%= @user.profile %>
         </div>
         <h3>Published Apps</h3>
@@ -18,7 +18,7 @@
                 </div>
             <% end %>
         </kit-container>
-        <%= link_to "Register new app", new_app_path, class: 'kit-button-alt -limegreen kit-block kit-text-c m-l' if account&.id == @user.id %>
+        <%= link_to "Register new app", new_app_path, class: 'kit-button-alt -limegreen kit-block kit-text-c m-t-l' if account&.id == @user.id %>
         <% if @user.apps.length == 0 %>
             <i>Nothing to show.</i>
         <% end %>

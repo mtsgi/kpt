@@ -1,26 +1,24 @@
 <div id="content">
     <h1>Register new app</h1>
     <% if( @app.errors.present? ) %>
-        <% @app.errors.messages.each do |message| %>
-            <% message[1].each do |m| %>
-                <div class="error"><%= m %></div>
-            <% end %>
+        <% @app.errors.full_messages.each do |message| %>
+            <div class="error m"><%= message %></div>
         <% end %>
     <% end %>
     <%= form_with( model: @app, local: true ) do |f| %>
         <div class='p'>
             <%= f.label(:name, 'App Name', class: 'kit-block') %>
-            <%= f.text_field(:name, placeholder: 'App Name', class: 'textbox') %>
+            <%= f.text_field(:name, placeholder: 'App Name', class: 'textbox kit-width-100 kit-font-l p') %>
         </div>
 
         <div class='p'>
             <%= f.label(:appid, 'App ID', class: 'kit-block') %>
-            <%= f.text_field(:appid, placeholder: 'App ID', class: 'textbox') %>
+            <%= f.text_field(:appid, placeholder: 'App ID', class: 'textbox kit-width-100') %>
         </div>
 
         <div class='p'>
             <%= f.label(:desc, 'Description', class: 'kit-block') %>
-            <%= f.text_area(:desc, placeholder: 'Description', class: 'textbox') %>
+            <%= f.text_area(:desc, placeholder: 'Description', class: 'textbox kit-width-100') %>
         </div>
 
         <%= f.submit(class: 'kit-button-alt -small m') %>
