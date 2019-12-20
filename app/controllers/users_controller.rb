@@ -14,7 +14,8 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to(user_path(@user.name) , notice: 'User registration is completed.')
         else
-            redirect_back(fallback_location: root_path)
+            redirect_to(new_user_path, flash: { errors: @user.errors.full_messages })
+            flash[:errors] = @user.errors.full_messages
         end
     end
 
