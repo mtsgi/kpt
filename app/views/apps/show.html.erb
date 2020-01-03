@@ -40,7 +40,9 @@
             <% if @versions.length > 0 %>
                 <% @versions.each do |version| %>
                     <div class="kit-box">
-                            <%= link_to( 'View define.json', version.path + 'define.json', class: "kit-hyperlink kit-right kit-font-s" ) %>
+                            <%= link_to( 'API data', 'api/v1/apps/' + @app.appid, class: "kit-hyperlink kit-right kit-font-s", target: "_blank" ) %>
+                            <span class="kit-right m-left m-r kit-sub">|</span>
+                            <%= link_to( 'define.json', version.path + 'define.json', class: "kit-hyperlink kit-right kit-font-s", target: "_blank" ) %>
                             <div>
                                 <strong><%= version.name %></strong>
                                 <span class="kit-sub"><%= version.public_uid %></span>

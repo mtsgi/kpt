@@ -5,8 +5,14 @@
     </div>
     <h3>Find kit apps</h3>
     <ul>
-        <li><%= link_to "All apps", apps_path, class: 'kit-hyperlink' %></li>
+        <li><%= link_to "View all apps", apps_path, class: 'kit-hyperlink' %></li>
     </ul>
+    <%= form_with url: apps_path, method: :get, local: true do |f| %>
+        <div class="kit-formgroup kit-width-100" style="flex-wrap: wrap">
+            <%= f.text_field :q, class: 'textbox kit-flex-grow' %>
+            <%= f.submit 'Search', name: nil, class: 'kit-button-alt -black kit-font-m' %>
+        </div>
+    <% end %>
     <h3>Accounts service</h3>
     <ul>
         <li><%= link_to "User registration", new_user_path, class: 'kit-hyperlink' %></li>

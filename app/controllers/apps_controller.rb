@@ -46,6 +46,9 @@ class AppsController < ApplicationController
 
     def index
         @apps = App.all
+        if params[:q]
+            @apps = @apps.where('name like ?', "%#{params[:q]}%")
+        end
     end
 
     def destroy
