@@ -47,7 +47,8 @@ class AppsController < ApplicationController
     def index
         @apps = App.all
         if params[:q]
-            @apps = @apps.where('name like ?', "%#{params[:q]}%")
+            @apps = @apps.select {|a| a.appid.include?(params[:q])}
+            @users = User.all.select {|u| u.name.include?(params[:q])}
         end
     end
 

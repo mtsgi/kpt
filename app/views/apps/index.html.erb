@@ -1,6 +1,6 @@
 <div id="content">
     <% if params[:q] %>
-        <h1>Search results for <%= params[:q] %></h1>
+        <h1>Search results for "<%= params[:q] %>"</h1>
         <%= form_with url: apps_path, method: :get, local: true do |f| %>
             <div class="kit-formgroup kit-width-100" style="flex-wrap: wrap">
                 <%= f.text_field :q, class: 'textbox kit-flex-grow', value: params[:q] %>
@@ -22,10 +22,24 @@
     <kit-container>
         <% @apps.each do |app| %>
             <div class="kit-pane kit-box hover p-s">
-                <%= link_to(app.appid,'/' + app.appid, class: 'kit-hyperlink') %>
+                <%= link_to(app.appid, '/' + app.appid, class: 'kit-hyperlink') %>
                 <span>- <%= app.name %></span>
                 <%= link_to( app.user.name, user_path(app.user.name), class: 'kit-sub kit-right kit-hl-alt') %>
             </div>
         <% end %>
     </kit-container>
+    
+    <% if @users %>
+        <h3>Search results of users</h3>
+        <p>There are <%= @users.length %> users.</p>
+
+        <kit-container>
+            <% @users.each do |user| %>
+                <div class="kit-pane kit-box hover p-s">
+                    <%= link_to(user.name, 'users/' + user.name, class: 'kit-hyperlink') %>
+                    <span class="kit-right kit-sub"><%= user.profile %></span>
+                </div>
+            <% end %>
+        </kit-container>
+    <% end %>
 </div>
