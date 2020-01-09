@@ -21,11 +21,13 @@
             <%= f.text_field(:appid, placeholder: 'App ID', class: 'textbox kit-width-100') %>
         </div>
 
+        <blockquote class="m-0 m-t-l">[Danger] This operation will change path and install command of this app on kpt.</blockquote>
+
         <div class='m-t'>
             <%= f.label(:desc, 'Description', class: 'kit-block') %>
             <%= f.text_area(:desc, placeholder: 'Description', class: 'textbox kit-width-100') %>
         </div>
 
-        <%= f.submit(class: 'kit-button-alt -medium m-t-l') %>
+        <%= f.submit(class: 'kit-button-alt -flat -medium m-t-l') %>
     <% end %>
 </div>

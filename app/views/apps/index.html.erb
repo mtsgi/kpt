@@ -7,7 +7,7 @@
                 <%= f.submit 'Search', name: nil, class: 'kit-button-alt -black kit-font-m' %>
             </div>
         <% end %>
-        <p>There are <%= @apps.length %> results.</p>
+        <p><%= @apps.length %> apps found.</p>
     <% else %>
         <h1>All apps on kpt</h1>
         <%= form_with url: apps_path, method: :get, local: true do |f| %>
@@ -31,7 +31,7 @@
     
     <% if @users %>
         <h3>Search results of users</h3>
-        <p>There are <%= @users.length %> users.</p>
+        <p><%= @users.length %> users found.</p>
 
         <kit-container>
             <% @users.each do |user| %>

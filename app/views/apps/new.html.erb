@@ -9,7 +9,7 @@
 
         <div class='p'>
             <%= f.label(:appid, 'App ID', class: 'kit-block') %>
-            <div class="kit-sub">Can't be duplicated.</div>
+            <div class="kit-sub">This can't be duplicated with other apps.</div>
             <%= f.text_field(:appid, placeholder: 'App ID', class: 'textbox kit-width-100 kit-font-l p m-t') %>
         </div>
 
@@ -22,6 +22,6 @@
             <%= f.text_area(:desc, placeholder: 'Description', class: 'textbox kit-width-100 m-t') %>
         </div>
 
-        <%= f.submit(class: 'kit-button-alt -medium m-t-l') %>
+        <%= f.submit(class: 'kit-button-alt -flat -medium m-t-l') %>
     <% end %>
 </div>

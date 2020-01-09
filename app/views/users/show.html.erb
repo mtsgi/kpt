@@ -3,22 +3,27 @@
 
 <div id="content">
     <% if @user %>
-        <%= link_to "Edit my profile", edit_user_path(account.name), class: 'kit-button-alt -dodgerblue kit-right' if account&.id == @user.id %>
+        <%= link_to "Edit my profile", edit_user_path(account.name), class: 'kit-button-alt -flat -dodgerblue kit-right' if account&.id == @user.id %>
         <h1><%= @user.name %></h1>
         <div class="kit-pane p-s">
-            <%= @user.profile %>
+            <%== h(@user.profile).gsub(/\R/, "<br>") %>
         </div>
-        <h3>Published Apps</h3>
+        <h3>
+            Published apps
+            <% if @user.apps.present? %>
+                <span class="kit-badge -dodgerblue kit-font-s p-s p-left p-r"><%= @user.apps.length %></span>
+            <% end %>
+        </h3>
         <kit-container>
             <% @user.apps.each do |app| %>
                 <div class="kit-pane kit-box hover p-s">
                     <%= link_to(app.appid,'/' + app.appid, class: 'kit-hyperlink') %>
                     <span>- <%= app.name %></span>
-                    <%= link_to( app.user.name, user_path(app.user.name), class: 'kit-sub kit-right kit-hl-alt') %>
+                    <%= link_to(app.user.name, user_path(app.user.name), class: 'kit-sub kit-right kit-hl-alt') %>
                 </div>
             <% end %>
         </kit-container>
-        <%= link_to "Register new app", new_app_path, class: 'kit-button-alt -limegreen kit-block kit-text-c m-t-l' if account&.id == @user.id %>
+        <%= link_to "Register new app", new_app_path, class: 'kit-button-alt -flat -limegreen kit-block kit-text-c m-t-l' if account&.id == @user.id %>
         <% if @user.apps.length == 0 %>
             <i>Nothing to show.</i>
         <% end %>

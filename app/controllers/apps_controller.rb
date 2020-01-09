@@ -23,7 +23,12 @@ class AppsController < ApplicationController
 
     def show
         @app = App.find_by(appid: params[:appid])
-        @versions = @app.versions.order(created_at: 'DESC')
+        if @app
+            @versions = @app.versions.order(created_at: 'DESC')
+        else
+            flash.notice = 'The app not found.'
+            redirect_to :root
+        end
     end
 
     def edit
