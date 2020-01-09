@@ -321,6 +321,17 @@ kit-button:active,
 
 /* child classes of kit-button */
 
+kit-button.-flat,
+.kit-button.-flat {
+    text-shadow: none;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, .2);
+}
+
+kit-button.-flat:hover,
+.kit-button.-flat:hover {
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, .3), inset 0px 9999px 0px 0px rgba(0, 0, 0, .15);
+}
+
 kit-button.-orange,
 .kit-button.-orange {
     background: #ffa500;
@@ -398,6 +409,18 @@ kit-button-alt:active,
 }
 
 /* child classes of kit-button-alt */
+
+kit-button-alt.-flat,
+.kit-button-alt.-flat {
+    border-width: 1px;
+    border-radius: 3px;
+}
+
+kit-button-alt.-flat:hover,
+.kit-button-alt.-flat:hover {
+    opacity: .9;
+    transition: none;
+}
 
 .kit-button-alt.-orange,
 kit-button-alt.-orange {

@@ -22,8 +22,18 @@
       <% end %>
     </header>
     <% if(flash.notice) %>
-      <div class="notice"><%= flash.notice %></div>
+      <div class="kit-notice m-t-l p"><%= flash.notice %></div>
     <% end %>
     <%= yield %>
+    <footer class="kit-footer p-l">
+      <a href="/" class="kit-hl">kpt</a> - kit pkg transfering system
+      <div class="m-t kit-sub">
+        <a href="/apps" class="kit-hl-alt">App apps</a>
+        |
+        <a href="/login" class="kit-hl-alt">Log in</a>
+        |
+        <a href="https://github.com/mtsgi/kpt" class="kit-hl-alt">GitHub</a>
+      </div>
+    </footer>
   </body>
 </html>

@@ -23,7 +23,12 @@ class AppsController < ApplicationController
 
     def show
         @app = App.find_by(appid: params[:appid])
-        @versions = @app.versions.order(created_at: 'DESC')
+        if @app
+            @versions = @app.versions.order(created_at: 'DESC')
+        else
+            flash.notice = 'The app not found.'
+            redirect_to :root
+        end
     end
 
     def edit
@@ -46,6 +51,10 @@ class AppsController < ApplicationController
 
     def index
         @apps = App.all
+        if params[:q]
+            @apps = @apps.select {|a| a.appid.include?(params[:q])}
+            @users = User.all.select {|u| u.name.include?(params[:q])}
+        end
     end
 
     def destroy
