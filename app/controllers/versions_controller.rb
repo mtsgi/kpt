@@ -33,6 +33,10 @@ class VersionsController < ApplicationController
 
         if code == '200'
             result = ActiveSupport::JSON.decode response.body
+            params[:def_version] = result["version"]
+            params[:def_id] = result["id"]
+            params[:def_name] = result["name"]
+            params[:def_author] = result["author"]
         else
             flash.notice = 'Cannot reach to define.json at the directory. Please enter correct directory of the kit app with character "/" at the end.'
             redirect_to('/' + @app.appid)
@@ -40,7 +44,7 @@ class VersionsController < ApplicationController
         end
           
         params[:app_id] = @app.id
-        @version = Version.new(params.permit(:name, :path, :app_id, :desc))
+        @version = Version.new(params.permit(:name, :path, :app_id, :desc, :def_version, :def_id, :def_name, :def_author))
         if( @version.save )
             redirect_to("/#{@app.appid}" , notice: "Version registration is completed. An app '#{result["id"]}' was recognized at the directory.")
         else
@@ -49,8 +53,8 @@ class VersionsController < ApplicationController
     end
 
     def edit
-        @app = App.find_by(appid: params[:app_appid])
         @version = Version.find_by( public_uid: params[:public_uid] )
+        @app = @version.app
         unless @version
             redirect_to("/#{@app.appid}" , notice: 'Version not found.')
             return
@@ -86,12 +90,30 @@ class VersionsController < ApplicationController
             return
         end
 
-        if @version.update(params[:version].permit(:name, :path, :desc))
+        params[:version][:def_version] = result["version"]
+        params[:version][:def_id] = result["id"]
+        params[:version][:def_name] = result["name"]
+        params[:version][:def_author] = result["author"]
+
+        if @version.update(params[:version].permit(:name, :path, :desc, :def_version, :def_id, :def_name, :def_author))
             flash.notice = "The version has been updated. An app '#{result["id"]}' was recognized at the directory."
             redirect_to('/' + @app.appid)
         else
             flash.notice = "Failed to update your profile."
             redirect_to('/' + @app.appid)
+        end
+    end
+
+    def destroy
+        @version = Version.find_by(id: params[:id])
+        @app = @version.app
+        unless account&.id == @app.user_id
+            flash.notice = "You cannnot delete the version."
+            redirect_to app_path @app.appid
+        end
+        if @version.destroy
+            flash.notice = "Version was successfully deleted."
+            redirect_to app_path @app.appid
         end
     end
 end

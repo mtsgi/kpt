@@ -1,24 +1,27 @@
-# README
+# kpt
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**kpt** is a kit pkg transfering system.
 
-Things you may want to cover:
+You can install and update easily kit apps by using kpt.
 
-* Ruby version
+https://kpkg.herokuapp.com/
 
-* System dependencies
+## Commands
 
-* Configuration
+There are commands on [kish](https://github.com/mtsgi/kish) to install or look up apps from kpt.
 
-* Database creation
+```
+🥧 kpt install <appid>
+```
 
-* Database initialization
+```
+🥧 kpt search <appid>
+```
 
-* How to run the test suite
+```
+🥧 kpt update
+```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+🥧 kpt uninstall <appid>
+```
