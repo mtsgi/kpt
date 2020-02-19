@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
       resources :users
-      resources :apps
+      resources :apps do
+        resources :versions
+      end
     end
   end
 end

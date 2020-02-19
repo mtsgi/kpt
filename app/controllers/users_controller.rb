@@ -42,7 +42,8 @@ class UsersController < ApplicationController
     end
 
     def token
-        if account
+        @user = User.find_by(name: params[:name])
+        if account && @user == account
             token = nil
             loop do
                 token = SecureRandom.hex(8)
