@@ -51,9 +51,8 @@ class UsersController < ApplicationController
             end
             if @user.update(token: token)
                 flash.notice = 'API token has been generated.'
-            else
-                redirect_to user_path(account.name)
             end
+            redirect_to user_path(account.name)
         else
             redirect_to(login_path, notice: 'You are not logged in.')
         end
