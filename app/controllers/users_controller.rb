@@ -46,21 +46,25 @@ class UsersController < ApplicationController
         if account && @user == account
             token = nil
             loop do
-                token = SecureRandom.hex(8)
+                token = SecureRandom.hex(6)
                 break unless User.find_by(token: token)
             end
-            account.update(token: token)
-            flash.notice = 'API token has been generated.'
-            redirect_to user_path(account.name)
+            if @user.update(token: token)
+                flash.notice = 'API token has been generated.'
+            else
+                redirect_to user_path(account.name)
+            end
         else
             redirect_to(login_path, notice: 'You are not logged in.')
         end
     end
 
     def del_token
-        if account
-            account.update(token: nil)
-            flash.notice = 'API token has been deleted.'
+        @user = User.find_by(name: params[:name])
+        if account && @user == account
+            if @user.update(token: nil)
+                flash.notice = 'API token has been deleted.'
+            end
             redirect_to user_path(account.name)
         else
             redirect_to(login_path, notice: 'You are not logged in.')
