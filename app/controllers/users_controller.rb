@@ -27,7 +27,7 @@ class UsersController < ApplicationController
         if account
             @user = account
         else
-            redirect_to(login_path , notice: 'You are not logged in.')
+            redirect_to(login_path, notice: 'You are not logged in.')
         end
     end
 
@@ -38,6 +38,31 @@ class UsersController < ApplicationController
         else
             flash.notice = "Failed to update your profile."
             redirect_to user_path(account.name)
+        end
+    end
+
+    def token
+        if account
+            token = nil
+            loop do
+                token = SecureRandom.hex(8)
+                break unless User.find_by(token: token)
+            end
+            account.update(token: token)
+            flash.notice = 'API token has been generated.'
+            redirect_to user_path(account.name)
+        else
+            redirect_to(login_path, notice: 'You are not logged in.')
+        end
+    end
+
+    def del_token
+        if account
+            account.update(token: nil)
+            flash.notice = 'API token has been deleted.'
+            redirect_to user_path(account.name)
+        else
+            redirect_to(login_path, notice: 'You are not logged in.')
         end
     end
 end

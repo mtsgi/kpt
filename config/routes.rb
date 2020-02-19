@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   root 'top#index'
   get 'login', to: 'top#login'
-  resources :users, param: :name
+  resources :users, param: :name do
+    member do
+      get :token
+      get :del_token
+    end
+  end
+
   resources :apps, param: :appid do
     resources :versions, param: :public_uid
   end
