@@ -2,7 +2,15 @@ module Api
   module V1
     class UsersController < ApplicationController
       def index
-        render json: { status: 'SUCCESS', data: User.all }
+        @data = User.all.map{ |u|
+          {
+            id: u.id,
+            name: u.name,
+            profile: u.profile,
+            created_at: u.created_at
+          }
+        }
+        render json: { status: 'SUCCESS', data: @data }
       end
 
       def show

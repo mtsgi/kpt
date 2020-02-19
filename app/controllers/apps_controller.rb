@@ -60,7 +60,7 @@ class AppsController < ApplicationController
     def destroy
         @app = App.find_by(id: params[:appid])
         if @app.destroy
-            flash.notice = "App was successfully deleted."
+            flash.notice = "Your app was successfully deleted."
             redirect_to root_path
         end
     end

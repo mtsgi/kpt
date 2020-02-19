@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_25_075331) do
+ActiveRecord::Schema.define(version: 2020_02_19_152855) do
 
   create_table "apps", force: :cascade do |t|
     t.integer "user_id"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_01_25_075331) do
     t.string "profile"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "token", limit: 16
   end
 
   create_table "versions", force: :cascade do |t|

@@ -24,8 +24,17 @@
             <% end %>
         </kit-container>
         <%= link_to "Register new app", new_app_path, class: 'kit-button-alt -flat -limegreen kit-block kit-text-c m-t-l' if account&.id == @user.id %>
+
         <% if @user.apps.length == 0 %>
             <i>Nothing to show.</i>
+        <% end %>
+
+        <% if account&.id == @user.id %>
+            <h3>API Token</h3>
+            <div>Your API token : <code><%= @user.token || 'none' %></code></div>
+            <blockquote>If you regenerate token, previous token will be disabled.</blockquote>
+            <%= link_to "Generate new token", token_user_path, class: 'kit-hl', data: { confirm: 'Are you sure you want to (re)generate the token?' } %>
+            <%= link_to "Delete token", del_token_user_path, class: 'kit-hl kit-clr-crimson', data: { confirm: 'Are you sure you want to delete the token?' } %>
         <% end %>
     <% else %>
         <h1>Something went wrong...</h1>

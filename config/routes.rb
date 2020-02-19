@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   root 'top#index'
   get 'login', to: 'top#login'
-  resources :users, param: :name
+  resources :users, param: :name do
+    member do
+      get :token
+      get :del_token
+    end
+  end
+
   resources :apps, param: :appid do
     resources :versions, param: :public_uid
   end
@@ -17,7 +23,9 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
       resources :users
-      resources :apps
+      resources :apps do
+        resources :versions
+      end
     end
   end
 end
