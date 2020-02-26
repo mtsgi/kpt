@@ -10,7 +10,7 @@ module Api
       def show
         @app = App.find_by( appid: params[:id] )
         if @app
-          render json: { status: 'SUCCESS', data: @app, versions: @app.versions }
+          render json: { status: 'SUCCESS', data: @app, versions: @app.versions.order(name: 'DESC') }
         else
           render json: { status: 'FAILED', error: "kpt: The app '#{params[:id]}' was not found." }
         end
