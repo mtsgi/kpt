@@ -1,5 +1,6 @@
 <div id="content">
-    <h1>kpt system</h1>
+    <h1>📦 Welcome to kpt system</h1>
+    <img src="/logo.png" alt="kpt" style="height: 90px">
     <div>
         <strong>kpt</strong> is a kit pkg transfering system.
     </div>
@@ -10,7 +11,7 @@
     </ul>
     <%= form_with url: apps_path, method: :get, local: true do |f| %>
         <div class="kit-formgroup kit-width-100" style="flex-wrap: wrap">
-            <%= f.text_field :q, class: 'textbox kit-flex-grow' %>
+            <%= f.text_field :q, class: 'textbox kit-flex-grow kit-fit', placeholder: 'Enter a search word...' %>
             <%= f.submit 'Search', name: nil, class: 'kit-button -flat kit-font-m' %>
         </div>
     <% end %>
