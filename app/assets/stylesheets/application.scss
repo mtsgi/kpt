@@ -15,36 +15,38 @@
  */
 
 header {
-    background: #f0f0f0;
-    border-bottom: 1px solid #c0c0c0;
-    font-size: 20px;
-}
-
-header .header-logo {
+  background: #f0f0f0;
+  border-bottom: 1px solid #c0c0c0;
+  font-size: 20px;
+  .header-logo {
     display: inline-block;
-    padding: 10px;
+    padding: 4px 10px;
     font-size: 20px;
     font-weight: 700;
     color: dodgerblue;
-}
-
-header .kit-right {
+    > img {
+      vertical-align: bottom;
+      height: 48px;
+    }
+  }
+  .kit-right {
     color: #909090;
     display: inline-block;
-    padding: 10px;
+    padding: 15px 8px;
     font-size: 20px;
     text-decoration: none;
-}
-
-header a:hover {
-    background-color: #e0e0e0;
-    text-decoration: underline;
-}
-
-header a img{
-    vertical-align: bottom;
-    height: 20px;
-    opacity: .6;
+    img{
+      vertical-align: bottom;
+      height: 24px;
+      opacity: .6;
+    }
+  }
+  a {
+    &:hover {
+      background-color: #e0e0e0;
+      text-decoration: underline;
+    }
+  }
 }
 
 h1 {
