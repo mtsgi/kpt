@@ -34,7 +34,7 @@
             <div class="kit-sub m-b">* This part is only visible to you.</div>
             <div>Your API token : <code><%= @user.token || 'none' %></code></div>
             <a href="https://github.com/mtsgi/kpt/wiki/API-Documentation" target="_blank" rel="noopener noreferrer" class="kit-hl">How to use this token? (GitHub Wiki)</a>
-            <blockquote>If you regenerate token, previous token will be disabled.</blockquote>
+            <blockquote>If you regenerate the token, the previous token will be disabled.</blockquote>
             <%= link_to "Generate new token", token_user_path, class: 'kit-hl', data: { confirm: 'Are you sure you want to (re)generate the token?' } %>
             <%= link_to "Delete token", del_token_user_path, class: 'kit-hl kit-clr-crimson', data: { confirm: 'Are you sure you want to delete the token?' } %>
         <% end %>

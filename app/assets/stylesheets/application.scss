@@ -14,6 +14,10 @@
  *= require_self
  */
 
+body {
+  color: #404040;
+}
+
 header {
   background: #f0f0f0;
   border-bottom: 1px solid #c0c0c0;
@@ -28,6 +32,9 @@ header {
       vertical-align: bottom;
       height: 48px;
     }
+  }
+  > span {
+    vertical-align: 8px;
   }
   .kit-right {
     color: #909090;
