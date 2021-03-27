@@ -16,7 +16,7 @@
       <a class='header-logo' href="/">
         <img src="/logo.png" alt="kpt">
       </a>
-      <%= @page_type %>
+      <span><%= @page_type %></span>
       <% if( account ) %>
         <%= link_to(image_tag('/exit.png', alt: 'Logout', title: 'Logout'), '/sessions/' + account.name, method: :delete, class: 'kit-right') %>
         <%= link_to(image_tag('/account_box.png', alt: 'Account', title: 'Account'), user_path(account.name), class: 'kit-right') %>
