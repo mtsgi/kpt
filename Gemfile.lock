@@ -128,8 +128,10 @@ GEM
     public_suffix (4.0.6)
     public_uid (2.1.1)
       activerecord (> 4.2)
-    puma (3.12.6)
-    puma (3.12.6-java)
+    puma (4.3.8)
+      nio4r (~> 2.0)
+    puma (4.3.8-java)
+      nio4r (~> 2.0)
     racc (1.5.2)
     racc (1.5.2-java)
     rack (2.2.3)
@@ -247,7 +249,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   pg
   public_uid
-  puma (~> 3.12)
+  puma (~> 4.3)
   rack-cors
   rails (~> 6.0.0)
   sass-rails (~> 5)
